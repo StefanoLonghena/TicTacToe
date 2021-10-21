@@ -1,4 +1,4 @@
-package es33;
+package es25;
 
 public class Persona {
 
@@ -6,6 +6,9 @@ public class Persona {
     private String nome;
     private String sesso;
     private String professione;
+
+    public Persona() {
+    }
 
     public Persona(int età, String nome, String sesso, String professione) {
         this.età = età;
@@ -46,7 +49,11 @@ public class Persona {
         this.professione = professione;
     }
 
-    public String chiSei(String name, String sesso, int eta, String professione) {
-        System.out.println("Sono una persona di nome: " + name + \n);
+    public void chiSei(String nome, String sesso, int eta, String professione) {
+        System.out.println(("Sono una persona di nome: " + nome + "\n" +
+                "sesso: " + sesso + "\n" +
+                "età: " + eta + "\n" +
+                "professione: " + professione
+        ));
     }
 }
