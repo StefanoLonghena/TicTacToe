@@ -47,6 +47,7 @@ public class Board {
         }
 
         //Disegna sulla board
+
         switch (position) {
             case 1 -> board[0][0] = player;
             case 2 -> board[0][1] = player;
