@@ -5,6 +5,7 @@ public class Board {
     private Boolean turn = true;
     private char player;
     private boolean gameEnded = false;
+    private int draw = 0;
 
     public Board() {}
 
@@ -41,9 +42,11 @@ public class Board {
         if(turn == true) {
             player = 'X';
             turn = false;
+            System.out.println("Tocca a O");
         } else {
             player = 'O';
             turn = true;
+            System.out.println("Tocca a X");
         }
 
         //Disegna sulla board
@@ -66,6 +69,8 @@ public class Board {
 
     //Controllo vittoria per righe colonne e diagonali
     public void winCondition() {
+        draw = 0;
+
         for(int i = 0; i < 3; i++) {
             if(board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != '-') {
                 gameEnded = true;
@@ -87,6 +92,18 @@ public class Board {
         if(board[2][0] == board[1][1] && board[1][1] ==  board[0][2] && board[2][0] != '-') {
             gameEnded = true;
             System.out.println(player + " won");
+        }
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] != '-'){
+                    draw += 1;
+                }
+            }
+        }
+        if (draw == 9) {
+            gameEnded = true;
+            System.out.println("Pareggio");
         }
     }
 }

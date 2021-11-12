@@ -19,6 +19,8 @@ public class Main {
         while(!b1.isGameEnded()) {
 
             do {
+                System.out.println("Inserisci un valore tra 1 e 9 che indica la posizione nella tabella, andando da sinistra verso destra");
+
                 position =  scanner.nextInt();
 
                 for (int i = 0; i < check.length; i++) {
