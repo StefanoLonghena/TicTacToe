@@ -17,6 +17,14 @@ public class Board {
         this.gameEnded = gameEnded;
     }
 
+    public Boolean getTurn() {
+        return turn;
+    }
+
+    public void setTurn(Boolean turn) {
+        this.turn = turn;
+    }
+
     //inizializzione della board
     public void createBoard() {
         for(int i = 0; i < 3; i++) {
@@ -42,11 +50,9 @@ public class Board {
         if(turn == true) {
             player = 'X';
             turn = false;
-            System.out.println("Tocca a O");
         } else {
             player = 'O';
             turn = true;
-            System.out.println("Tocca a X");
         }
 
         //Disegna sulla board

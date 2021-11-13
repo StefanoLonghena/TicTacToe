@@ -5,42 +5,63 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Board b1 = new Board();
 
-        int position;
-        int[] check = {-1, -1, -1, -1, -1, -1, -1, -1, -1};
+        int playAgain = 1;
+        boolean turn;
+        char player;
 
-        Scanner scanner = new Scanner(System.in);
+        while (playAgain == 1) {
+            Board b1 = new Board();
 
-        b1.createBoard();
+            int position;
+            int[] check = {-1, -1, -1, -1, -1, -1, -1, -1, -1};
 
-        b1.printBoard();
+            Scanner scanner = new Scanner(System.in);
 
-        while(!b1.isGameEnded()) {
+            b1.createBoard();
+
+            b1.printBoard();
+
+            while (!b1.isGameEnded()) {
+
+                do {
+                    turn = b1.getTurn();
+
+                    if(turn == true) {
+                        player = 'X';
+                        turn = false;
+                    } else {
+                        player = 'O';
+                        turn = true;
+                    }
+
+                    System.out.println("tocca a " + player + ", Inserisci un valore tra 1 e 9 che indica la posizione nella tabella, andando da sinistra verso destra");
+
+                    position = scanner.nextInt();
+
+                    for (int i = 0; i < check.length; i++) {
+                        if (check[i] == position) {
+                            System.out.println("La casella è già stata occupata");
+                            position = 10;
+                        }
+                    }
+                } while (position > 9 || position < 1);
+
+
+                check[position - 1] = position;
+
+                b1.placeChar(position);
+                b1.printBoard();
+                b1.winCondition();
+            }
 
             do {
-                System.out.println("Inserisci un valore tra 1 e 9 che indica la posizione nella tabella, andando da sinistra verso destra");
+                System.out.println("Vuoi giocare ancora (0=no, 1=sì)?");
 
-                position =  scanner.nextInt();
+                playAgain = scanner.nextInt();
+            }while (playAgain != 0 || playAgain != 1);
 
-                for (int i = 0; i < check.length; i++) {
-                    if(check[i] == position) {
-                        System.out.println("La casella è già stata occupata");
-                        position = 10;
-                    }
-                }
-            }while(position > 9 || position < 1);
-
-
-
-            check[position-1] = position;
-
-            b1.placeChar(position);
-            b1.printBoard();
-            b1.winCondition();
         }
-
-
 
     }
 }
