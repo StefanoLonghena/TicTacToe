@@ -59,7 +59,7 @@ public class Main {
                 System.out.println("Vuoi giocare ancora (0=no, 1=sì)?");
 
                 playAgain = scanner.nextInt();
-            }while (playAgain != 0 || playAgain != 1);
+            }while (playAgain != 0 && playAgain != 1);
 
         }
 
